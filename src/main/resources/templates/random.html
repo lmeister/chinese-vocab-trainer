@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chinese Vocabulary Trainer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script>
+        function showElement(id) {
+            const target = document.getElementById(id);
+            if (target.style.visibility == 'hidden') {
+                target.style.visibility = 'visible';
+            } else {
+                target.style.visibility = 'hidden';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Chinese Vocabulary Trainer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Random Vocabulary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Add Vocabulary</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <h1 class="mt-5">Random Vocabulary</h1>
+    <p class="lead">Press the toggle button to either hide or show the content of the field above.</p>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Hanzi</th>
+                <th scope="col">Pinyin</th>
+                <th scope="col">English</th>
+                <th scope="col">Area</th>
+                <th scope="col">Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <!-- Todo: Diese Sachen hier ordentlich verstecken und so-->
+                <th scope="row" th:text="${vocabulary.hanzi}"><div id="hanzi">HANZI</div></th>
+                <td th:text="${vocabulary.pinyin}"><div id="pinyin" style="visibility:hidden">PINYIN</div></td>
+                <td th:text="${vocabulary.english}"><div id="english" style="visibility:hidden">ENGLISH</div></td>
+                <td th:text="${vocabulary.area}"><div id="area" style="visibility:hidden">AREA</div></td>
+                <td th:text="${vocabulary.category}"><div id="category" style="visibility:hidden">CATEGORY</div></td>
+            </tr>
+            <tr>
+                <th scope="row"><button type="button" class="btn btn-secondary" onclick="showElement('hanzi')">Toggle</button></th>
+                <td><button type="button" class="btn btn-secondary" onclick="showElement('pinyin')">Toggle</button></td>
+                <td><button type="button" class="btn btn-secondary" onclick="showElement('english')">Toggle</button></td>
+                <td><button type="button" class="btn btn-secondary" onclick="showElement('area')">Toggle</button></td>
+                <td><button type="button" class="btn btn-secondary" onClick="showElement('category')">Toggle</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

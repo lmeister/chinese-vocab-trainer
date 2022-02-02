@@ -20,4 +20,8 @@ public class VocabularyService {
         return vocabularyRepository.findAll();
     }
 
+    // Randomize this
+    public Vocabulary getRandom() {
+        return vocabularyRepository.findAll().get(1);
+    }
 }

@@ -22,4 +22,16 @@ public class VocabularyController {
         return "home";
     }
 
+    @GetMapping("random")
+    public String random(Model model) {
+        Vocabulary vocabulary = vocabularyService.getRandom();
+        model.addAttribute("vocabulary", vocabulary);
+        return "random";
+    }
+
+
+    @GetMapping("add")
+    public String getAddVocabularyForm() {
+        return "add";
+    }
 }
