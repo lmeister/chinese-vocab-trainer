@@ -1,8 +1,23 @@
 package de.leonmeister.chinesevocabtrainer.vocabulary;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Vocabulary {
 
+    @Id
+    @SequenceGenerator(
+            name = "vocabulary_sequence",
+            sequenceName = "vocabulary_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "vocabulary_sequence"
+    )
     private Long id;
+
     private String hanzi;
     private String pinyin;
     private String english;
