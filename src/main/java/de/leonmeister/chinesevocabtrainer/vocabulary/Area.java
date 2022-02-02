@@ -4,5 +4,6 @@ public enum Area {
     FOOD,
     COLORS,
     NUMBERS,
-    COUNTRIES
+    COUNTRIES,
+    OTHER
 }
