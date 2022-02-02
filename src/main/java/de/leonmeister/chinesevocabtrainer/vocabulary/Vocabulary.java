@@ -41,6 +41,10 @@ public class Vocabulary {
         this.category = category;
     }
 
+    public Vocabulary() {
+
+    }
+
     public Long getId() {
         return id;
     }
