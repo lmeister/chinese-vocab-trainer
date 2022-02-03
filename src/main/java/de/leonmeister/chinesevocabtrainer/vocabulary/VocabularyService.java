@@ -39,8 +39,6 @@ public class VocabularyService {
             throw new IllegalStateException("Vocabulary already in database.");
         }
         vocabularyRepository.save(vocabulary);
-
-        System.out.println(vocabulary);
     }
 
     public void deleteVocabulary(Long id) {

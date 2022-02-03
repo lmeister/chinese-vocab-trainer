@@ -43,7 +43,6 @@ public class VocabularyController {
 
     @PostMapping(value = "add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void addVocabulary(Vocabulary vocabulary) {
-        System.out.println(vocabulary);
         vocabularyService.addNewVocabulary(vocabulary);
     }
 
