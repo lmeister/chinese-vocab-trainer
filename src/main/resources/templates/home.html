@@ -51,16 +51,22 @@
         <th>English</th>
         <th>Area</th>
         <th>Category</th>
+        <th>Delete</th>
     </tr>
     </thead>
 
     <tr th:each="vocabulary : ${allVocabularies}">
-        <td th:text="${vocabulary.id}"></td>
-        <td th:text="${vocabulary.hanzi}"></td>
-        <td th:text="${vocabulary.pinyin}"></td>
-        <td th:text="${vocabulary.english}"></td>
-        <td th:text="${vocabulary.area}"></td>
-        <td th:text="${vocabulary.category}"></td>
+        <td th:text="${vocabulary.id}" class="fs-5"></td>
+        <td th:text="${vocabulary.hanzi}" class="fs-4"></td>
+        <td th:text="${vocabulary.pinyin}" class="fs-5"></td>
+        <td th:text="${vocabulary.english}" class="fs-5"></td>
+        <td th:text="${vocabulary.area}" class="fs-5"></td>
+        <td th:text="${vocabulary.category}" class="fs-5"></td>
+        <td>
+            <form>
+                <a th:href="@{/delete/{id}(id=${vocabulary.id})}" class="btn btn-danger">Delete</a>
+            </form>
+        </td>
     </tr>
 </table>
 

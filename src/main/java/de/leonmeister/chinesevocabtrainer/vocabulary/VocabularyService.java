@@ -23,10 +23,13 @@ public class VocabularyService {
     }
 
 
-    public Vocabulary getRandom() {
+    public Optional<Vocabulary> getRandom() {
         List<Vocabulary> allVocab = vocabularyRepository.findAll();
+        if (allVocab.size() == 0) {
+            return Optional.empty();
+        }
         int random = new Random().nextInt(allVocab.size());
-        return allVocab.get(random);
+        return Optional.of(allVocab.get(random));
     }
 
     public void addNewVocabulary(Vocabulary vocabulary) {
@@ -38,5 +41,13 @@ public class VocabularyService {
         vocabularyRepository.save(vocabulary);
 
         System.out.println(vocabulary);
+    }
+
+    public void deleteVocabulary(Long id) {
+        boolean exists = vocabularyRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("Could not find vocabulary with id " + id);
+        }
+        vocabularyRepository.deleteById(id);
     }
 }

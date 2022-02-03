@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class VocabularyController {
@@ -22,6 +19,7 @@ public class VocabularyController {
     public String home(Model model) {
         List<Vocabulary> allVocabularies = vocabularyService.getVocabularies();
 
+        System.out.println("Bin ich hier?");
         model.addAttribute("amountOfVocabularies", allVocabularies.size());
         model.addAttribute("allVocabularies", allVocabularies);
         return "home";
@@ -29,9 +27,14 @@ public class VocabularyController {
 
     @GetMapping("random")
     public String random(Model model) {
-        Vocabulary vocabulary = vocabularyService.getRandom();
-        model.addAttribute("vocabulary", vocabulary);
-        return "random";
+        Optional<Vocabulary> vocabulary = vocabularyService.getRandom();
+        //For now, redirect to home when there are no vocabs saved
+        if (vocabulary.isPresent()) {
+            model.addAttribute("vocabulary", vocabulary.get());
+            return "random";
+        } else {
+            return "redirect:/";
+        }
     }
 
 
@@ -42,14 +45,14 @@ public class VocabularyController {
 
     @PostMapping(value = "add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void addVocabulary(Vocabulary vocabulary) {
-
-//        Vocabulary vocabulary = new Vocabulary(
-//                content.get("hanzi"),
-//                content.get("pinyin"),
-//                content.get("english")
-//        );
-//        System.out.println(content);
         System.out.println(vocabulary);
         vocabularyService.addNewVocabulary(vocabulary);
+    }
+
+    @GetMapping(path="/delete/{id}")
+    public String deleteVocabulary(@PathVariable("id") Long id) {
+        System.out.println("Deleting vocab with id: " + id);
+        vocabularyService.deleteVocabulary(id);
+        return "redirect:/";
     }
 }
