@@ -41,6 +41,12 @@ public class Vocabulary {
         this.category = category;
     }
 
+    public Vocabulary(String hanzi, String pinyin, String english) {
+        this.hanzi = hanzi;
+        this.pinyin = pinyin;
+        this.english = english;
+    }
+
     public Vocabulary() {
 
     }
