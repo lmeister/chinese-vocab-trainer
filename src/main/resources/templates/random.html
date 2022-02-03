@@ -9,7 +9,7 @@
     <script>
         function showElement(id) {
             const target = document.getElementById(id);
-            if (target.style.visibility == 'hidden') {
+            if (target.style.visibility === 'hidden') {
                 target.style.visibility = 'visible';
             } else {
                 target.style.visibility = 'hidden';
@@ -62,12 +62,11 @@
             </thead>
             <tbody>
             <tr>
-                <!-- Todo: Diese Sachen hier ordentlich verstecken und so-->
-                <th scope="row" th:text="${vocabulary.hanzi}"><div id="hanzi">HANZI</div></th>
-                <td th:text="${vocabulary.pinyin}"><div id="pinyin" style="visibility:hidden">PINYIN</div></td>
-                <td th:text="${vocabulary.english}"><div id="english" style="visibility:hidden">ENGLISH</div></td>
-                <td th:text="${vocabulary.area}"><div id="area" style="visibility:hidden">AREA</div></td>
-                <td th:text="${vocabulary.category}"><div id="category" style="visibility:hidden">CATEGORY</div></td>
+                <td><div id="hanzi" th:text="${vocabulary.hanzi}" class="fs-4"></div></td>
+                <td><div id="pinyin" style="visibility:hidden" th:text="${vocabulary.pinyin}" class="fs-5"></div></td>
+                <td><div id="english" style="visibility:hidden" th:text="${vocabulary.english}" class="fs-5"></div></td>
+                <td><div id="area" style="visibility:hidden" th:text="${vocabulary.area}" class="fs-5"></div></td>
+                <td><div id="category" style="visibility:hidden" th:text="${vocabulary.category}" class="fs-5"></div></td>
             </tr>
             <tr>
                 <th scope="row"><button type="button" class="btn btn-secondary" onclick="showElement('hanzi')">Toggle</button></th>
@@ -80,14 +79,5 @@
         </table>
     </div>
 </footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../assets/js/vendor/popper.min.js"></script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-
 </body>
 </html>

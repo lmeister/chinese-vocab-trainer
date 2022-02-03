@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class VocabularyService {
@@ -20,8 +21,10 @@ public class VocabularyService {
         return vocabularyRepository.findAll();
     }
 
-    // Randomize this
+
     public Vocabulary getRandom() {
-        return vocabularyRepository.findAll().get(1);
+        List<Vocabulary> allVocab = vocabularyRepository.findAll();
+        int random = new Random().nextInt(allVocab.size());
+        return allVocab.get(random);
     }
 }
