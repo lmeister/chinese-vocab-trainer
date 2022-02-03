@@ -18,8 +18,6 @@ public class VocabularyController {
     @GetMapping("/")
     public String home(Model model) {
         List<Vocabulary> allVocabularies = vocabularyService.getVocabularies();
-
-        System.out.println("Bin ich hier?");
         model.addAttribute("amountOfVocabularies", allVocabularies.size());
         model.addAttribute("allVocabularies", allVocabularies);
         return "home";
@@ -51,7 +49,6 @@ public class VocabularyController {
 
     @GetMapping(path="/delete/{id}")
     public String deleteVocabulary(@PathVariable("id") Long id) {
-        System.out.println("Deleting vocab with id: " + id);
         vocabularyService.deleteVocabulary(id);
         return "redirect:/";
     }
