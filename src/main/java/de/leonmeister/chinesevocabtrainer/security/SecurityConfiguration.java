@@ -38,7 +38,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // This configures which api requires which role
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable() //We don't need CSRF Protection here
+                .authorizeRequests()
                 .antMatchers("/add").hasAnyRole("STUDENT", "ADMIN")
                 .antMatchers("/delete/**").hasRole("ADMIN")
                 .antMatchers("/").permitAll()
