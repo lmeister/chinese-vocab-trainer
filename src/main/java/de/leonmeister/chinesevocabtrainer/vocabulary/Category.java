@@ -7,5 +7,6 @@ public enum Category {
     TENSE, // Stuff like "tomorrow", "yesterday"
     PRONOUN, // I, You,..
     DETERMINER, // Counting/Measuring words like gè
-    LOCATIONS // On, in, down under..
+    LOCATIONS, // On, in, down under..
+    QUESTION_WORD // What, where,..
 }
