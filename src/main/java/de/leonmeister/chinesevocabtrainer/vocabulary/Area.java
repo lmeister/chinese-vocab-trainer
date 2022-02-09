@@ -5,5 +5,11 @@ public enum Area {
     COLORS,
     NUMBERS,
     COUNTRIES,
+    ACTIVITIES,
+    VEHICLES,
+    ANIMALS,
+    SHAPES,
+    PLACES, // Temples, Schools, Uni, Supermarket, Living room,..
+    DEVICES, // Smartphone, TV,
     OTHER
 }
